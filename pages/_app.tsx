@@ -1,8 +1,7 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import Main from '@/components/wrapper/Main';
 import Navbar from '@/components/blocks/Navbar';
-import Page from '@/components/wrapper/Page';
+import Main from '@/components/wrapper/Main';
 import Sidebar from '@/components/blocks/Sidebar';
 import { sidebarStore } from '../store/sidebarStore';
 
@@ -11,12 +10,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Main>
-        <Sidebar sidebarView={sidebarView} />
-        <Page sidebarView={sidebarView}>
-          <Navbar />
-          <Component {...pageProps} />
-        </Page>
+      <Sidebar sidebarView={sidebarView} />
+      <Main sidebarView={sidebarView}>
+        <Navbar />
+        <Component {...pageProps} />
       </Main>
     </>
   );

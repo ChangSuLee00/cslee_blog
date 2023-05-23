@@ -7,7 +7,7 @@ interface NavbarProps {}
 const Navbar: React.FC<NavbarProps> = () => {
   const trueSidebar = sidebarStore((state) => state.trueSidebar);
   return (
-    <nav className="navbar-height bg-black">
+    <nav className="navbar-height bg-zinc-900 opacity-95">
       <div className="ml-5 mr-5 py-2">
         <div className="flex items-center justify-between">
           <Link href="/" className="px-4 py-2 rounded-lg">
