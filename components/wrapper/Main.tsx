@@ -5,7 +5,7 @@ interface PageProps {
   children: React.ReactNode;
 }
 
-const Page: React.FC<PageProps> = ({ children, sidebarView }) => {
+const Main: React.FC<PageProps> = ({ children, sidebarView }) => {
   return (
     <>
       {children}
@@ -16,4 +16,4 @@ const Page: React.FC<PageProps> = ({ children, sidebarView }) => {
   );
 };
 
-export default Page;
+export default Main;
