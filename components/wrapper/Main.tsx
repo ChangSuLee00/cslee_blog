@@ -1,19 +1,11 @@
 import React from 'react';
 
-interface PageProps {
-  sidebarView: boolean;
+interface MainProps {
   children: React.ReactNode;
 }
 
-const Main: React.FC<PageProps> = ({ children, sidebarView }) => {
-  return (
-    <>
-      {children}
-      {sidebarView && (
-        <div className="absolute top-0 left-0 w-full h-full backdrop-filter backdrop-blur-xs pointer-events-none"></div>
-      )}
-    </>
-  );
+const Main: React.FC<MainProps> = ({ children }) => {
+  return <div className="flex w-full">{children}</div>;
 };
 
 export default Main;

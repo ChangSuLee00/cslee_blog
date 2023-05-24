@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import useWindowSize from '@/utilities/windowSize';
 import React from 'react';
 
 interface SidebarProps {
@@ -6,17 +6,34 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ sidebarView }) => {
+  const { width } = useWindowSize();
+  const isLargeScreen = width > 1600;
   const sidebarClass = sidebarView ? 'sidebar sidebar-open' : 'sidebar';
+
   return (
-    <div
-      className={`${sidebarClass} w-300px h-screen bg-black flex flex-col fixed left-0 overflow-auto z-50`}
-    >
-      <div className="mt-10">
-        <nav className="flex flex-col space-y-1">
-          <div className="text-white">hi</div>
-        </nav>
-      </div>
-    </div>
+    <>
+      {isLargeScreen ? (
+        <div
+          className={`w-300px h-screen bg-black flex flex-col left-0 overflow-auto z-50`}
+        >
+          <div className="mt-10">
+            <nav className="flex flex-col space-y-1">
+              <div className="text-white">hi</div>
+            </nav>
+          </div>
+        </div>
+      ) : (
+        <div
+          className={`${sidebarClass} fixed w-300px h-screen bg-black flex flex-col left-0 overflow-auto z-50`}
+        >
+          <div className="mt-10">
+            <nav className="flex flex-col space-y-1">
+              <div className="text-white">hi</div>
+            </nav>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

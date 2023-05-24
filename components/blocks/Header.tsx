@@ -1,18 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
 import { sidebarStore } from '../../store/sidebarStore';
+import useWindowSize from '@/utilities/windowSize';
 
-interface NavbarProps {}
+interface HeaderProps {}
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Header: React.FC<HeaderProps> = () => {
   const trueSidebar = sidebarStore((state) => state.trueSidebar);
+  const { width } = useWindowSize();
+  const isLargeScreen = width > 1600;
+
   return (
-    <header className="navbar-height bg-zinc-900 opacity-95 fixed w-full">
+    <header className="header-height bg-zinc-900 opacity-95 w-full absolute overflow-hidden">
       <div className="ml-5 mr-5 py-2">
         <div className="flex items-center justify-between">
-          <button className="text-white text-lg" onClick={trueSidebar}>
-            =
-          </button>
+          {!isLargeScreen ? (
+            <button className="text-white text-lg" onClick={trueSidebar}>
+              =
+            </button>
+          ) : (
+            <div></div>
+          )}
           <div className="text-lg">
             <text className="text-gray-500">&lt; </text>
             <text className="text-blue-500">cslee</text>
@@ -32,4 +40,4 @@ const Navbar: React.FC<NavbarProps> = () => {
   );
 };
 
-export default Navbar;
+export default Header;
